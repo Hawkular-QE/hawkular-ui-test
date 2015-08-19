@@ -3,7 +3,7 @@ import org.openqa.selenium.By;
 public class HawkularRedeployConstants {
 
 	
-	public static final By selectFirstWarAction =  By.id("dropdownMenu2");
+	public static final By actionDropdown =  By.id("dropdownMenu2");
 	public static final By selectRedeployWar =  By.linkText("Redeploy");
 	public static final By selectDisableWar =  By.linkText("Disable");
 	public static final By selectEnableWar =  By.linkText("Enable");

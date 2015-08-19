@@ -14,7 +14,7 @@ public class HawkularDepoymentActionPage {
         this.driver = driver;
     }    
   
-    By selectFirstWarAction = HawkularRedeployConstants.selectFirstWarAction;
+    By actionDropdown = HawkularRedeployConstants.actionDropdown;
     By selectRedeployWar = HawkularRedeployConstants.selectRedeployWar;
     By verifySuccess = HawkularRedeployConstants.verifySuccess;
     By verifySucceeded = HawkularRedeployConstants.verifySucceeded;
@@ -22,18 +22,13 @@ public class HawkularDepoymentActionPage {
     By selectDisableWar = HawkularRedeployConstants.selectDisableWar;
     
     
-public void clickFirstWarAction(){
-	
-	HawkularUtils utils = new HawkularUtils(driver);
-	utils.navigateTo(selectFirstWarAction);
-	utils.waitForElementPresent(selectRedeployWar);
-}
-
-
 public void clickToRedeployFirstWar(){
 	
 	HawkularUtils utils = new HawkularUtils(driver);
-	utils.navigateTo(selectRedeployWar);
+	utils.waitForElementPresent(actionDropdown);
+	driver.findElement(actionDropdown).click();
+	utils.waitForElementPresent(selectRedeployWar);
+        driver.findElement(selectRedeployWar).click();
 	
 }
 
@@ -49,14 +44,19 @@ public void verfiySuccess(){
 public void clickToEnableWar(){
 	
 	HawkularUtils utils = new HawkularUtils(driver);
-	utils.navigateTo(selectEnableWar);
+	utils.waitForElementPresent(actionDropdown);
+        driver.findElement(actionDropdown).click();
+        utils.waitForElementPresent(selectEnableWar);
+        driver.findElement(selectEnableWar).click();
 }
 
 public void clickToDisableFirstWar(){
 	
 	HawkularUtils utils = new HawkularUtils(driver);
-	utils.navigateTo(selectDisableWar);
-	
+	utils.waitForElementPresent(actionDropdown);
+        driver.findElement(actionDropdown).click();
+        utils.waitForElementPresent(selectDisableWar);
+        driver.findElement(selectDisableWar).click();	
 }
 
 

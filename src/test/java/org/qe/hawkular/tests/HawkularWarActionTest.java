@@ -13,7 +13,7 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 	
 	   
 	@Test
-	public void hawkularLoginRedeploy()	throws Exception {
+	public void HawkularRedeployTest()	throws Exception {
 		WebDriver driver = createLocalDriver();
 
 		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
@@ -42,7 +42,6 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 		
 		
 		HawkularDepoymentActionPage testRedeploy = new HawkularDepoymentActionPage(driver);
-		testRedeploy.clickFirstWarAction();
 		testRedeploy.clickToRedeployFirstWar();
 		testRedeploy.verfiySuccess();
 				
@@ -51,7 +50,7 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 	}
 
 	@Test
-	public void hawkularLoginEnable() throws Exception {
+	public void HawkularEnableWarTest() throws Exception {
 		WebDriver driver = createLocalDriver();
 
 		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
@@ -80,7 +79,6 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 		
 		
 		HawkularDepoymentActionPage testEnableWar = new HawkularDepoymentActionPage(driver);
-		testEnableWar.clickFirstWarAction();
 		testEnableWar.clickToEnableWar();
 		testEnableWar.verfiySuccess();
 				
@@ -90,7 +88,7 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 	
 
 	@Test
-	public void hawkularLoginDisable()	throws Exception {
+	public void HawkularDisableWarTest()	throws Exception {
 		WebDriver driver = createLocalDriver();
 
 		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
@@ -118,7 +116,6 @@ public class HawkularWarActionTest extends HawkularSeleniumLocalWebDriver {
 		
 		
 		HawkularDepoymentActionPage testDisableWar = new HawkularDepoymentActionPage(driver);
-		testDisableWar.clickFirstWarAction();
 		testDisableWar.clickToDisableFirstWar();
 		testDisableWar.verfiySuccess();
 				
