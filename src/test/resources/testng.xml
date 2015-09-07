@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HawkularUITest">
-    <test name="HawkualrAppServerTest">
+    <test name="HawkularTests">
         <classes>
-            <class name="org.qe.hawkular.tests.HawkularAppServerTest" >
-                <methods>
-                    <include name="hawkularURLTraitsTest"></include>
-                </methods>
-            </class>
+          <class name="org.qe.hawkular.tests.HawkularAppServerTest" /> 
+                    
+          <class name="org.qe.hawkular.tests.HawkularWarActionTest" /> 
+
+            
         </classes>
     </test>
 </suite>
