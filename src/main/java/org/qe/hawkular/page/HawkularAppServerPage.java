@@ -17,13 +17,14 @@ public class HawkularAppServerPage {
 
     By localAppServerLink = HawkularAppServerPageConstants.localWildfyServerLink;
     By appServerJvmtabLocator = HawkularAppServerPageConstants.appServerJvmtabLocator;
-    By appServerDatasourcestabLink = HawkularAppServerPageConstants.appServerDatasourcestabLink;
-    By appServerDeploymentstabLink = HawkularAppServerPageConstants.appServerDeploymentsLink;
-    By appServerDeploymentstabLocator = HawkularAppServerPageConstants.appServerDeploymentstabLocator;
+    By appServerDatasourcesLink = HawkularAppServerPageConstants.appServerDatasourcesLink;
+    By appServerJVMLink = HawkularAppServerPageConstants.appServerJVMLink;
+    By appServerDeploymentsLink = HawkularAppServerPageConstants.appServerDeploymentsLink;
+    By appServerDeploymentsLocator = HawkularAppServerPageConstants.appServerDeploymentsLocator;
     By appServerWarFileLocator = HawkularAppServerPageConstants.appServerWarFileLocator;
     By appServerRHALocator = HawkularAppServerPageConstants.appServerRHALocator;
     By appServerRHASearchLocator = HawkularAppServerPageConstants.appServerRHASearchLocator;
-    
+
     public void verifyLocalAppServerExists() {
         HawkularUtils util = new HawkularUtils(driver);
         Assert.assertTrue(util.waitForElementPresent(localAppServerLink));
@@ -41,17 +42,22 @@ public class HawkularAppServerPage {
 
     public void navigateToDeploymentsTab() {
         HawkularUtils util = new HawkularUtils(driver);
-        util.navigateTo(appServerDeploymentstabLink);
+        util.navigateTo(appServerDeploymentsLink);
     }
 
     public void navigateToDatasourcesTab() {
         HawkularUtils util = new HawkularUtils(driver);
-        util.navigateTo(appServerDatasourcestabLink);
+        util.navigateTo(appServerDatasourcesLink);
+    }
+
+    public void navigateToJVMTab() {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.navigateTo(appServerJVMLink);
     }
 
     public boolean verifyAppServerDeploymentsTabNavigation() {
         HawkularUtils util = new HawkularUtils(driver);
-        return util.waitForElementPresent(appServerDeploymentstabLocator);
+        return util.waitForElementPresent(appServerDeploymentsLocator);
     }
 
     public boolean verifyAppServerWarExists() {

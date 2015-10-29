@@ -16,7 +16,6 @@ public class HawkularAlertsSettingsPage {
     By responseTimeField = HawkularAlertsSettingsConstants.responseTimeField;
 
     public HawkularAlertsSettingsPage(WebDriver driver) {
-
         this.driver = driver;
     }
 

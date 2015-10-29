@@ -8,47 +8,48 @@ import org.qe.hawkular.page.*;
 import org.testng.annotations.Test;
 
 /**
- * Test case for searching the knowledge base for solutions.
- *
+ *  Test case for searching the knowledge base for solutions.
+ *  
+ * @author vprusa
+ * @author Sunil Kondkar
  */
-
 public class HawkularRHASearchTest extends HawkularSeleniumLocalWebDriver {
 
-	public WebDriver hawkularLogin() throws Exception {
-		WebDriver driver = createLocalDriver();
+    public WebDriver hawkularLogin() throws Exception {
+        WebDriver driver = createLocalDriver();
 
-		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
-		System.out.println(driver.getTitle());
+        driver.get(HawkularSeleniumWebDriver.hawkularUrl);
+        System.out.println(driver.getTitle());
 
-		HawkularLoginPage loginPage = new HawkularLoginPage(driver);
+        HawkularLoginPage loginPage = new HawkularLoginPage(driver);
 
-		loginPage.verifyLoginTitle();
+        loginPage.verifyLoginTitle();
 
-		loginPage = new HawkularLoginPage(driver);
-		loginPage.loginAs(HawkularRegistrationPageConstants.username2,
-				HawkularRegistrationPageConstants.password2);
+        loginPage = new HawkularLoginPage(driver);
+        loginPage.loginAs(HawkularRegistrationPageConstants.username2,
+                HawkularRegistrationPageConstants.password2);
 
-		return driver;
-	}
+        return driver;
+    }
 
-	@Test
-	public void hawkularSearchKnowledgeBaseTest() throws Exception {
-		WebDriver driver = hawkularLogin();
-		HawkularAppServerPage appServer = new HawkularAppServerPage(driver);
+    @Test
+    public void hawkularSearchKnowledgeBaseTest() throws Exception {
+        WebDriver driver = hawkularLogin();
+        HawkularAppServerPage appServer = new HawkularAppServerPage(driver);
 
-		appServer.navigateToRHATab();
-		appServer.navigateToRHASearchTab();
+        appServer.navigateToRHATab();
+        appServer.navigateToRHASearchTab();
 
-		HawkularRedHatAccessPage rha = new HawkularRedHatAccessPage(driver);
-		rha.switchFrameFocus();
-		rha.loginHere();
-		rha.switchFrameFocus(true);
-		HawkularRHASearchPage rhaSearch = new HawkularRHASearchPage(driver);
-		rhaSearch.switchFrameFocus();
-		rhaSearch.search("asd");
-		
-		rha.logoutHere();
-		driver.close();
-	}
+        HawkularRedHatAccessPage rha = new HawkularRedHatAccessPage(driver);
+        rha.switchFrameFocus();
+        rha.loginHere();
+        rha.switchFrameFocus(true);
+        HawkularRHASearchPage rhaSearch = new HawkularRHASearchPage(driver);
+        rhaSearch.switchFrameFocus();
+        rhaSearch.search("asd");
+
+        rha.logoutHere();
+        driver.close();
+    }
 
 }

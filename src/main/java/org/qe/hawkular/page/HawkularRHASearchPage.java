@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.qe.hawkular.element.*;
 import org.qe.hawkular.util.HawkularUtils;
 
+/**
+ * @author vprusa
+ */
 public class HawkularRHASearchPage {
 
 	public final WebDriver driver;

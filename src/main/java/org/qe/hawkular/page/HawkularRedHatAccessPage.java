@@ -8,6 +8,9 @@ import org.qe.hawkular.element.HawkularCreateCaseConstants;
 import org.qe.hawkular.util.HawkularUtils;
 import org.testng.Assert;
 
+/**
+ * @author vprusa
+ */
 public class HawkularRedHatAccessPage {
 
 	WebDriver driver;

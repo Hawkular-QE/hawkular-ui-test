@@ -27,44 +27,68 @@ import com.saucelabs.testng.SauceOnDemandTestListener;
 
 public class HawkularAlertsSettingsTest extends HawkularSeleniumLocalWebDriver {
 
-	@BeforeSuite
-	public void prepareUser() throws MalformedURLException {
-		WebDriver driver = createLocalDriver();
-		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
-		System.out.println(driver.getTitle());
-		HawkularRegistrationPage registration = new HawkularRegistrationPage(
-				driver);
-		registration.registerUserIfDoesNotExist(HawkularRegistrationPageConstants.username, HawkularRegistrationPageConstants.password, HawkularRegistrationPageConstants.confirmPassword, HawkularRegistrationPageConstants.firstName, HawkularRegistrationPageConstants.lastName, HawkularRegistrationPageConstants.email);
+    @BeforeSuite
+    public void prepareUser() throws MalformedURLException {
+        WebDriver driver = createLocalDriver();
+        driver.get(HawkularSeleniumWebDriver.hawkularUrl);
+        System.out.println(driver.getTitle());
+        HawkularRegistrationPage registration = new HawkularRegistrationPage(
+                driver);
+        registration.registerUserIfDoesNotExist(HawkularRegistrationPageConstants.username,
+                HawkularRegistrationPageConstants.password, HawkularRegistrationPageConstants.confirmPassword,
+                HawkularRegistrationPageConstants.firstName, HawkularRegistrationPageConstants.lastName,
+                HawkularRegistrationPageConstants.email);
 
-	}
+        driver.get(HawkularSeleniumWebDriver.hawkularUrl);
+        System.out.println(driver.getTitle());
+        HawkularLoginPage loginPage = new HawkularLoginPage(driver);
+        HawkularUtils util = new HawkularUtils(driver);
+        util.assertTitle(HawkularLoginPageConstants.loginTitle);
+        loginPage.loginAs(HawkularRegistrationPageConstants.username,
+                HawkularRegistrationPageConstants.password);
+    }
 
-	@Test
-	public void hawkularAlertsSettingsTest() throws Exception {
-		WebDriver driver = createLocalDriver();
+    @Test
+    public void hawkularAlertsSettingsTest() throws Exception {
+        WebDriver driver = createLocalDriver();
 
-		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
-		System.out.println(driver.getTitle());
-		HawkularLoginPage loginPage = new HawkularLoginPage(driver);
-		HawkularUtils util = new HawkularUtils(driver);
-		util.assertTitle(HawkularLoginPageConstants.loginTitle);
-		loginPage.loginAs(HawkularRegistrationPageConstants.username,
-				HawkularRegistrationPageConstants.password);
+        HawkularConsoleAddUrlPage addUrlPage = new HawkularConsoleAddUrlPage(
+                driver);
+        addUrlPage.verifyConsoleImagePresent();
+        addUrlPage.typeURL(HawkularManagementConsolePageConstants.testURL);
+        addUrlPage.submitURL();
+        addUrlPage.verifyUrlExists();
+        addUrlPage.navigateToURL();
 
-		HawkularConsoleAddUrlPage addUrlPage = new HawkularConsoleAddUrlPage(
-				driver);
-		addUrlPage.verifyConsoleImagePresent();
-		addUrlPage.typeURL(HawkularManagementConsolePageConstants.testURL);
-		addUrlPage.submitURL();
-		addUrlPage.verifyUrlExists();
-		addUrlPage.navigateToURL();
+        HawkularAlertsSettingsPage alertsSettings = new HawkularAlertsSettingsPage(driver);
+        alertsSettings.navigateToAllAlerts();
+        alertsSettings.verifyAllAlertsLinkPresent();
+        alertsSettings.navigateToAlertsSettings();
+        alertsSettings.verifyAlertSettingsOpened();
 
-		HawkularAlertsSettingsPage alertsSettings = new HawkularAlertsSettingsPage(driver);
-		alertsSettings.navigateToAllAlerts();
-		alertsSettings.verifyAllAlertsLinkPresent();
-		alertsSettings.navigateToAlertsSettings();
-		alertsSettings.verifyAlertSettingsOpened();
+        driver.quit();
 
-		driver.quit();
+    }
+    
+    @Test
+    public void hawkularAlaertsSettingsTest() throws Exception {
+        WebDriver driver = createLocalDriver();
 
-	}
+        HawkularConsoleAddUrlPage addUrlPage = new HawkularConsoleAddUrlPage(
+                driver);
+        addUrlPage.verifyConsoleImagePresent();
+        addUrlPage.typeURL(HawkularManagementConsolePageConstants.testURL);
+        addUrlPage.submitURL();
+        addUrlPage.verifyUrlExists();
+        addUrlPage.navigateToURL();
+
+        HawkularAlertsSettingsPage alertsSettings = new HawkularAlertsSettingsPage(driver);
+        alertsSettings.navigateToAllAlerts();
+        alertsSettings.verifyAllAlertsLinkPresent();
+        alertsSettings.navigateToAlertsSettings();
+        alertsSettings.verifyAlertSettingsOpened();
+
+        driver.quit();
+
+    }
 }
