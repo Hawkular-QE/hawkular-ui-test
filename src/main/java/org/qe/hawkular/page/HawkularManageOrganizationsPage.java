@@ -17,22 +17,37 @@ public class HawkularManageOrganizationsPage {
     }
 
     By rhAccessDropdownLocator = HawkularManageOrganizationsConstants.rhAccessDropdownLocator;
-    By rhAccessManageOrganizationsOptionLocator = HawkularManageOrganizationsConstants.rhAccessManageOrganizationsOptionLocator;
-    By removeOrganizationButton = HawkularManageOrganizationsConstants.removeOrganizationButton;
-    By removeOrganizationButtonConfirm = HawkularManageOrganizationsConstants.removeOrganizationButtonConfirm;
-    By removeOrganizationVerify = HawkularManageOrganizationsConstants.removeOrganizationVerify;
+    By rhAccessManageOrgOptionLocator = HawkularManageOrganizationsConstants.rhAccessManageOrgOptionLocator;
+
+    By createOrgButtonLocator = HawkularManageOrganizationsConstants.createOrgButtonLocator;
+    By organizationNameLocator = HawkularManageOrganizationsConstants.organizationNameLocator;
+    String organizationName = HawkularManageOrganizationsConstants.organizationName;
+    By modalCreateOrgButtonLocator = HawkularManageOrganizationsConstants.modalCreateOrgButtonLocator;
+    By createOrgVerifyLocator = HawkularManageOrganizationsConstants.createOrgVerifyLocator;
+
+    By removeOrgButtonLocator = HawkularManageOrganizationsConstants.removeOrgButtonLocator;
+    By removeOrgButtonConfirmLocator = HawkularManageOrganizationsConstants.removeOrgButtonConfirmLocator;
+    By removeOrgVerifyLocator = HawkularManageOrganizationsConstants.removeOrgVerifyLocator;
 
     public void toManageOrganizationsTab() {
         HawkularUtils util = new HawkularUtils(driver);
         util.navigateTo(rhAccessDropdownLocator);
-        util.navigateTo(rhAccessManageOrganizationsOptionLocator);
+        util.navigateTo(rhAccessManageOrgOptionLocator);
+    }
+
+    public void createOrganization() {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.navigateTo(createOrgButtonLocator);
+        util.sendKeysTo(organizationNameLocator, organizationName);
+        util.navigateTo(modalCreateOrgButtonLocator);
+        util.waitForElementPresent(createOrgVerifyLocator);
     }
 
     public void removeOrganization(int lineNumber) {
         HawkularUtils util = new HawkularUtils(driver);
-        util.navigateTo(removeOrganizationButton);
-        util.navigateTo(removeOrganizationButtonConfirm);
-        util.waitForElementPresent(removeOrganizationVerify);
+        util.navigateTo(removeOrgButtonLocator);
+        util.navigateTo(removeOrgButtonConfirmLocator);
+        util.waitForElementPresent(removeOrgVerifyLocator);
     }
 
 }

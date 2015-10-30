@@ -67,7 +67,7 @@
 	</test> 
 	-->
 	<!-- Hawkular JDBC driver upload test -->
-	!--<test name="HawkularDatasourcesTest">
+	<!--<test name="HawkularDatasourcesTest">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
             <methods>
@@ -75,11 +75,20 @@
             </methods>
 		</classes>
 	</test>
-	 
+	 -->
 	<!-- Hawkular Add Deployment Tests -->
 	<!--<test name="HawkularAddDeploymentTest">
 	<classes>
 			<class name="org.qe.hawkular.tests.HawkularAddDeploymentTest" />
 		</classes>
 	</test>-->
+  <!-- Hawkular JDBC driver upload test -->
+  <test name="HawkularOrganizationsTest">
+    <classes>
+      <class name="org.qe.hawkular.tests.HawkularOrganizationsTest" />
+            <methods>
+              <include name="hawkularDeleteOrgTest"></include>
+            </methods>
+    </classes>
+  </test>
 </suite>
