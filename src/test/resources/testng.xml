@@ -67,14 +67,14 @@
 	</test> 
 	-->
 	<!-- Hawkular JDBC driver upload test -->
-	<!--<test name="HawkularDatasourcesTest">
+	!--<test name="HawkularDatasourcesTest">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
             <methods>
-              <include name="hawkularExportJDRTest"></include>
+              <include name="hawkularAddJDBCDriversTest"></include>
             </methods>
 		</classes>
-	</test>-->
+	</test>
 	 
 	<!-- Hawkular Add Deployment Tests -->
 	<!--<test name="HawkularAddDeploymentTest">

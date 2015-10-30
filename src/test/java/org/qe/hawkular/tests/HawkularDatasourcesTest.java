@@ -46,8 +46,8 @@ public class HawkularDatasourcesTest extends HawkularSeleniumLocalWebDriver {
         page.loadDriverFile();
         page.defineDriverParams();
         page.addDriverSubmit();
-        page.verifyDriverUploadSuccess(); 
-        //driver.quit();
+        page.verifyDriverUploadSuccess();
+        driver.quit();
     }
 
     @Test
@@ -56,7 +56,7 @@ public class HawkularDatasourcesTest extends HawkularSeleniumLocalWebDriver {
         HawkularDatasourcesPage page = new HawkularDatasourcesPage(
                 driver);
         page.exportJDR();
-        page.verifyExportJDRSuccess();
+        page.verifyExportJDRSuccess(); // TODO 
         driver.quit();
     }
 
