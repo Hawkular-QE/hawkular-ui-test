@@ -6,7 +6,7 @@ public class HawkularDatasourcesPageConstants {
 
     public static final By addDriver = By.xpath("id('hk-datasources')//button[text()='Add Driver']");
     public static final By loadDriverFile = By.id("driver-file");
-    public static final String driverFilePath = "/hawkular-ui-test/src/test/resources/mysql-connector-java-5.1.36-bin.jar";// TODO URL or Path?
+    public static final String driverFilePath = "http://web.bc.jonqe.lab.eng.bos.redhat.com/hawkular/Hawkular-QE/mysql-connector-java-5.1.17-bin.jar";
     public static final By driverFilePathNextButton = By.xpath(
             "//button[@ng-disabled='addJdbcDriverForm.$invalid' and not(@disabled)]");
 

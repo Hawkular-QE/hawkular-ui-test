@@ -1,5 +1,12 @@
 package org.qe.hawkular.page;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.qe.hawkular.element.HawkularDatasourcesPageConstants;
@@ -40,9 +47,21 @@ public class HawkularDatasourcesPage {
         util.waitForElementPresent(loadDriverFile);
     }
 
+    public void downloadFile() throws IOException{
+        URL website = new URL(driverFilePath);
+        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+        FileOutputStream fos = new FileOutputStream("/tmp/driver.jar");
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+    }
+    
     public void loadDriverFile() {
         HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(loadDriverFile, driverFilePath);
+        try {
+            downloadFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        util.sendKeysTo(loadDriverFile, "/tmp/driver.jar");
         util.navigateTo(driverFilePathNextButton);
     }
 
