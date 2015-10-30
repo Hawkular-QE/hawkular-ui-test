@@ -7,9 +7,8 @@ public class HawkularDatasourcesPageConstants {
     public static final By addDriver = By.xpath("id('hk-datasources')//button[text()='Add Driver']");
     public static final By loadDriverFile = By.id("driver-file");
     public static final String driverFilePath = "/hawkular-ui-test/src/test/resources/mysql-connector-java-5.1.36-bin.jar";// TODO URL or Path?
-    public static final By driverFilePathNextButton = By.xpath("//div[@class='modal-footer ng-scope']"
-            + "//button[@ng-disabled='addJdbcDriverForm.$invalid' and @class='btn btn-primary' and "
-            + "contains(text(),'Next >') and not(@disabled)]");
+    public static final By driverFilePathNextButton = By.xpath(
+            "//button[@ng-disabled='addJdbcDriverForm.$invalid' and not(@disabled)]");
 
     public static final By driverNameSelect = By.id("dn");
     public static final String driverName = "mysql";
@@ -18,13 +17,13 @@ public class HawkularDatasourcesPageConstants {
     public static final By driverClassSelect = By.id("dc");
     public static final String driverClass = "com.mysql.jdbc.Driver";
     public static final By driverParamsNextButton = By
-            .xpath("//div[@class='modal-footer ng-scope']//button["
-                    + "@ng-disabled='!dac.driverData.driverName || !dac.driverData.moduleName || !dac.driverData.driverClass' "
-                    + "and @class='btn btn-primary' and contains(text(),'Next >') and not(@disabled)]");
+            .xpath("//button[@ng-disabled='!dac.driverData.driverName || !dac.driverData.moduleName || !dac.driverData.driverClass' and not(@disabled)]");
 
     public static final By addButton = By
-            .xpath("//div[@class='modal-footer ng-scope']//button[contains(text(),'Add') ]");
+            .xpath("//div[@class='modal-dialog']//button[contains(text(),'Add')]");
+    
+    public static final By verifyDriverUploadSuccess = By.xpath("//div[@class='modal-dialog']//div[contains(@class,'alert') and not(contains(@class,'ng-hide'))]//strong[text()='Success!']");
 
-    public static final By exportJDR = By.xpath("//button[contains(text(),'Export JDR')]");
-
+    public static final By exportJDR = By.xpath("//button[@ng-click='tabs.requestExportJDR()']");
+    
 }

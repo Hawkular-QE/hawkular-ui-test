@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HawkularUITest">
-
 	<!-- Hawkular Red Hat Login and Registration Tests 
 	 <test name="HawkularLoginAndRegistrationTests">
 		<classes> 
@@ -42,7 +41,7 @@
         </test>
     -->
 	<!-- Hawkular Red Hat Access Create Support Case Test -->
-	 <test name="hawkularCreateSupportcaseTest">
+	<!-- <test name="hawkularCreateSupportcaseTest">
         <classes>
             <class name="org.qe.hawkular.tests.HawkularCreatCaseTest" >
                 <methods>					
@@ -50,14 +49,13 @@
 				</methods>
             </class>            
             </classes>
-        </test> 
+        </test> -->
 	
 	<!-- Hawkular Application Server Deployments Actions Tests 
 	 <test name="HawkualrWarActionTest">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularWarActionTest">
 				<methods>
-					
 					<include name="hawkularEnableWarTest"></include>
 					<include name="hawkularRedeployWarTest"></include>
 					<include name="hawkularDisableWarTest"></include>
@@ -69,17 +67,19 @@
 	</test> 
 	-->
 	<!-- Hawkular JDBC driver upload test -->
-	<test name="HawkularDatasourcesTest">
+	<!--<test name="HawkularDatasourcesTest">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
+            <methods>
+              <include name="hawkularExportJDRTest"></include>
+            </methods>
 		</classes>
-	</test> 
+	</test>-->
 	 
-	 
-	 <!-- Hawkular Add Deployment Tests -->
-	<test name="HawkularAddDeploymentTest">
+	<!-- Hawkular Add Deployment Tests -->
+	<!--<test name="HawkularAddDeploymentTest">
 	<classes>
 			<class name="org.qe.hawkular.tests.HawkularAddDeploymentTest" />
 		</classes>
-	</test>
+	</test>-->
 </suite>

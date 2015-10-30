@@ -27,10 +27,12 @@ public class HawkularDatasourcesPage {
     By driverParamsNextButton = HawkularDatasourcesPageConstants.driverParamsNextButton;
 
     By addButton = HawkularDatasourcesPageConstants.addButton;
-    
+
     By exportJDR = HawkularDatasourcesPageConstants.exportJDR;
-    
-    // TODO optional: Driver Major Version , Driver Minor Version
+
+    By verifyDriverUploadSuccess = HawkularDatasourcesPageConstants.verifyDriverUploadSuccess;
+
+    // TODO optional: Driver Major Version, Driver Minor Version
 
     public void navigateAddDriverTab() {
         HawkularUtils util = new HawkularUtils(driver);
@@ -56,11 +58,19 @@ public class HawkularDatasourcesPage {
         HawkularUtils util = new HawkularUtils(driver);
         util.navigateTo(addButton);
     }
-    
+
     public void exportJDR() {
         HawkularUtils util = new HawkularUtils(driver);
         util.navigateTo(exportJDR);
     }
-    
-  
+
+    public void verifyDriverUploadSuccess() {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.waitForElementPresent(verifyDriverUploadSuccess);
+    }
+
+    public void verifyExportJDRSuccess() {
+        // TODO  verify file download
+    }
+
 }
