@@ -2,9 +2,17 @@
 <suite name="HawkularUITest">
   <test name="HawkularOrganizationsTest">
     <classes>
-      <class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
+      <class name="org.qe.hawkular.tests.HawkularOrganizationsTest" />
+      <methods>
+        <include name="hawkularCreateOrgTest"></include>
+        <include name="hawkularDeleteOrgTest"></include>
+      </methods>
+    </classes>
+    <classes>
+      <class name="org.qe.hawkular.tests.HawkularDatasourcesPage" />
       <methods>
         <include name="hawkularAddJDBCDriversTest"></include>
+        <include name="hawkularExportJDRTest"></include>
       </methods>
     </classes>
   </test>

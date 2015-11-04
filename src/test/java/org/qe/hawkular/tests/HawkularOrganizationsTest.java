@@ -31,7 +31,7 @@ public class HawkularOrganizationsTest extends HawkularSeleniumLocalWebDriver {
     }
 
     @Test
-    public void hawkularCreateOrgTest() throws Exception {
+    public void hawkularCreateNewOrgTest() throws Exception {
         WebDriver driver = hawkularLogin();
         HawkularManageOrganizationsPage page = new HawkularManageOrganizationsPage(driver);
 
