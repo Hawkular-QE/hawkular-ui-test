@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HawkularUITest">
   <test name="HawkularOrganizationsTest">
-    <classes>
+  <classes>
+      <class name="org.qe.hawkular.tests.HawkularAlertsDefinitionsTest" />
+      <methods>
+        <include name="hawkularAlertSettingsTest"></include>
+      </methods>
+    </classes>
+     <classes>
       <class name="org.qe.hawkular.tests.HawkularOrganizationsTest" />
       <methods>
         <include name="hawkularCreateOrgTest"></include>
@@ -9,7 +15,7 @@
       </methods>
     </classes>
     <classes>
-      <class name="org.qe.hawkular.tests.HawkularDatasourcesPage" />
+      <class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
       <methods>
         <include name="hawkularAddJDBCDriversTest"></include>
         <include name="hawkularExportJDRTest"></include>
