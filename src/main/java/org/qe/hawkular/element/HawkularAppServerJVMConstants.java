@@ -38,6 +38,6 @@ public class HawkularAppServerJVMConstants {
             .xpath("//div[@class='modal-footer']//button[@ng-click='jas.cancel()']");
 
     public static final By createAlertVerifySaveLocator = By
-            .xpath("//div(@id='toast-container')//*[contains(text(),'Alert settings successfully saved')]");
+            .xpath("//div[@id='toast-container']//*[contains(text(),'Alert settings successfully saved')]");
 
 }

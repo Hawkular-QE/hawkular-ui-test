@@ -7,7 +7,7 @@
         <include name="hawkularAlertSettingsTest"></include>
       </methods>
     </classes>
-     <classes>
+    <!--<classes>
       <class name="org.qe.hawkular.tests.HawkularOrganizationsTest" />
       <methods>
         <include name="hawkularCreateOrgTest"></include>
@@ -20,6 +20,6 @@
         <include name="hawkularAddJDBCDriversTest"></include>
         <include name="hawkularExportJDRTest"></include>
       </methods>
-    </classes>
+    </classes>-->
   </test>
 </suite>
