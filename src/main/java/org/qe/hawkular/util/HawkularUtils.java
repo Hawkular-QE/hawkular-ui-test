@@ -3,6 +3,7 @@ package org.qe.hawkular.util;
 import org.apache.regexp.recompile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.qe.hawkular.element.HawkularManagementConsolePageConstants;
@@ -22,23 +23,6 @@ public class HawkularUtils {
 
     public boolean assertTitle(String title) {
         return driver.getTitle().equals(title);
-    }
-
-    /**
-     * Tries to navigate over By locator array till first success
-     * Usage navigateTo(saveButton, cancelButton, cancelCrossButton)
-     * @return By used locator
-     */
-    public By navigateTo(By... navigationLinks) {
-        int i = 0;
-        for (By navigationLink : navigationLinks) {
-            if (waitForElementPresent(navigationLink)) {
-                driver.findElement(navigationLink).click();
-                return navigationLink;
-            }
-            i++;
-        }
-        return null;
     }
 
     public void navigateTo(By navigationLink) {
@@ -65,6 +49,11 @@ public class HawkularUtils {
 
     public void assertElementPresent(By element) {
         Assert.assertTrue(waitForElementPresent(element));
+    }
+
+    public String getElementsText(By element) {
+        WebElement we = driver.findElement(element);
+        return we.getText();
     }
 
 }

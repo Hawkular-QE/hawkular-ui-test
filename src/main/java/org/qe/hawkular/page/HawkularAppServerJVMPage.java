@@ -75,9 +75,9 @@ public class HawkularAppServerJVMPage {
     }
 
     public void setLocalEmail() {
-        String notifSshUsername = System.getProperty("notifSshUsername");
-        Assert.assertTrue(notifSshUsername != null);
-        CharSequence cs = (CharSequence) (notifSshUsername + "@localhost");
+        String email = System.getProperty("notifEmail");
+        Assert.assertTrue(email != null);
+        CharSequence cs = (CharSequence) (email);
         setEmail(cs);
     }
 
@@ -86,7 +86,7 @@ public class HawkularAppServerJVMPage {
      */
     public void saveAndVerify(float heapUsageGreaterThen) {
         HawkularUtils util = new HawkularUtils(driver);
-        if(!util.waitForElementPresent(createAlertSaveLocator)){
+        if (!util.waitForElementPresent(createAlertSaveLocator)) {
             setHeapUsageGreaterThan(heapUsageGreaterThen);
         }
         util.navigateTo(createAlertSaveLocator);
