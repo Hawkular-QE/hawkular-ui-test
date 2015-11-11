@@ -1,12 +1,10 @@
 package org.qe.hawkular.util;
 
-import org.apache.regexp.recompile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.qe.hawkular.element.HawkularManagementConsolePageConstants;
 import org.testng.Assert;
 
 /**
@@ -36,15 +34,23 @@ public class HawkularUtils {
         driver.findElement(navigationLink).sendKeys(cs);
     }
 
-    public boolean waitForElementPresent(By element) {
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+    public boolean waitForElementPresent(By element, int time) {
+        WebDriverWait wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
         return driver.findElement(element).isDisplayed();
     }
 
-    public void waitForElementNotPresent(By element) {
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+    public boolean waitForElementPresent(By element) {
+        return waitForElementPresent(element, 60);
+    }
+
+    public void waitForElementNotPresent(By element, int time) {
+        WebDriverWait wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
+    }
+
+    public void waitForElementNotPresent(By element) {
+        waitForElementNotPresent(element, 60);
     }
 
     public void assertElementPresent(By element) {

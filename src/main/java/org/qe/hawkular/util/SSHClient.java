@@ -15,6 +15,7 @@ import com.trilead.ssh2.StreamGobbler;
  * @author vprusa
  */
 public class SSHClient {
+
     protected Connection connection = null;
     protected Session session = null;
     private final String user;
@@ -49,10 +50,20 @@ public class SSHClient {
         return pass;
     }
 
-    public void execCommnad(String cmd) {
+    private String lastOutput = null;
+
+    public String getLastOutput() {
+        return lastOutput;
+    }
+
+    public Integer execCommnad(String cmd) {
+        // TODO there is probably better solution without reconnection via session (problem with unfinished cmd when executing another cmd)
+        connect();
+        log.info("Executiong command via SSH: " + cmd);
         try {
             session.execCommand(cmd);
             InputStream stdout = new StreamGobbler(session.getStdout());
+            @SuppressWarnings("resource")
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             String out = "";
             while (true) {
@@ -61,11 +72,17 @@ public class SSHClient {
                     break;
                 out += line + "\n";
             }
-            out += "ExitCode: " + session.getExitStatus();
+            lastOutput = out;
+            Integer r = session.getExitStatus();
             log.info(out);
+            log.info("ExitCode: " + r);
+            close();
+            return r;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        close();
+        return null;
     }
 
     public void close() {
@@ -75,12 +92,22 @@ public class SSHClient {
 
     public void connect() {
         try {
+            log.info("Connecctiong to " + user + "@" + host);
             connection = new Connection(host);
             connection.connect();
             boolean isAuthenticated = connection.authenticateWithPassword(user, pass);
             if (isAuthenticated == false)
                 throw new IOException("Authentication failed.");
             session = connection.openSession();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getFile(String remoteFile, String localTargetDirectory) {
+        try {
+            log.info("Loading file " + remoteFile + " to " + localTargetDirectory);
+            connection.createSCPClient().get(remoteFile, localTargetDirectory);
         } catch (IOException e) {
             e.printStackTrace();
         }
