@@ -1,6 +1,7 @@
 package org.qe.hawkular.util;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -60,6 +61,20 @@ public class HawkularUtils {
     public String getElementsText(By element) {
         WebElement we = driver.findElement(element);
         return we.getText();
+    }
+
+    public void refresh() {
+        driver.navigate().refresh();
+    }
+    
+    public boolean existsElement(By element) {
+        // TODO better solution without try-catch
+        try {
+            driver.findElement(element);
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
 
 }
