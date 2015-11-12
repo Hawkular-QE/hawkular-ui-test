@@ -1,7 +1,6 @@
 package org.qe.hawkular.page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.qe.hawkular.element.HawkularAlertCenterPageConstants;
 import org.qe.hawkular.util.HawkularUtils;

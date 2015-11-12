@@ -23,12 +23,17 @@ public class HawkularAppServerJVMPage {
     By alertSettingHeapUsageGreaterLocator = HawkularAppServerJVMConstants.alertSettingHeapUsageGreaterLocator;
     By alertSettingHeapUsageLessLocator = HawkularAppServerJVMConstants.alertSettingHeapUsageLessLocator;
 
+    By alertSettingNonHeapUsageGreaterLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageGreaterLocator;
+    By alertSettingNonHeapUsageLessLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageLessLocator;
+
     By heapUsageGreaterSwitchLocator = HawkularAppServerJVMConstants.heapUsageGreaterSwitchLocator;
     By heapUsageLessSwitchLocator = HawkularAppServerJVMConstants.heapUsageLessSwitchLocator;
 
-    By createAlertEveryTimeOptionLocator = HawkularAppServerJVMConstants.createAlertEveryTimeOptionLocator;
+    By alertSettingNonHeapUsageButtonLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageButtonLocator;
 
-    By createAlertWhenConditionOptionLocator = HawkularAppServerJVMConstants.createAlertWhenConditionOptionLocator;
+    By heapUsageCreateAlertEveryTimeOptionLocator = HawkularAppServerJVMConstants.heapUsageCreateAlertEveryTimeOptionLocator;
+
+    By heapUsageCreateAlertWhenConditionOptionLocator = HawkularAppServerJVMConstants.heapUsageCreateAlertWhenConditionOptionLocator;
     By createAlertConditionTimeLocator = HawkularAppServerJVMConstants.createAlertConditionTimeLocator;
     By createAlertConditionTimeUnitLocator = HawkularAppServerJVMConstants.createAlertConditionTimeUnitLocator;
     By createAlertNotificationEmailLocator = HawkularAppServerJVMConstants.createAlertNotificationEmailLocator;
@@ -48,6 +53,16 @@ public class HawkularAppServerJVMPage {
         util.sendKeysTo(alertSettingHeapUsageGreaterLocator, String.valueOf(percent));
     }
 
+    public void setNonHeapUsageLessThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(alertSettingNonHeapUsageLessLocator, String.valueOf(percent));
+    }
+
+    public void setNonHeapUsageGreaterThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(alertSettingNonHeapUsageGreaterLocator, String.valueOf(percent));
+    }
+
     public void setHeapUsageLessThan(float percent) {
         HawkularUtils util = new HawkularUtils(driver);
         util.sendKeysTo(alertSettingHeapUsageLessLocator, String.valueOf(percent));
@@ -60,9 +75,9 @@ public class HawkularAppServerJVMPage {
     public void setOptionCreateAlert(By timeLocator, CharSequence... cs) {
         HawkularUtils util = new HawkularUtils(driver);
         if (timeLocator == null || cs == null) {
-            util.navigateTo(createAlertEveryTimeOptionLocator);
+            util.navigateTo(heapUsageCreateAlertEveryTimeOptionLocator);
         } else {
-            util.navigateTo(createAlertWhenConditionOptionLocator);
+            util.navigateTo(heapUsageCreateAlertWhenConditionOptionLocator);
             util.sendKeysTo(createAlertConditionTimeLocator, cs);
             util.navigateTo(createAlertConditionTimeUnitLocator);
             util.navigateTo(timeLocator);
@@ -91,6 +106,11 @@ public class HawkularAppServerJVMPage {
         }
         util.navigateTo(createAlertSaveLocator);
         util.assertElementPresent(createAlertVerifySaveLocator);
+    }
+
+    public void toNonHeapUsage() {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.navigateTo(alertSettingNonHeapUsageButtonLocator);
     }
 
 }

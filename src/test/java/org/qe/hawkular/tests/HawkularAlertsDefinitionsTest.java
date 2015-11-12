@@ -7,7 +7,6 @@ import org.qe.hawkular.driver.HawkularSeleniumLocalWebDriver;
 import org.qe.hawkular.driver.HawkularSeleniumWebDriver;
 import org.qe.hawkular.element.*;
 import org.qe.hawkular.page.*;
-import org.qe.hawkular.util.HawkularUtils;
 import org.qe.hawkular.util.SSHClient;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -62,6 +61,14 @@ public class HawkularAlertsDefinitionsTest extends HawkularSeleniumLocalWebDrive
         page.setHeapUsageLessThan(heapUsageLessThan);
         page.setOptionCreateAlert();
         page.setLocalEmail();
+        
+        page.toNonHeapUsage();
+        
+        page.setNonHeapUsageGreaterThan(heapUsageGreaterThan);
+        page.setNonHeapUsageLessThan(heapUsageLessThan);
+        page.setOptionCreateAlert();
+        page.setLocalEmail();
+        
         page.saveAndVerify(heapUsageGreaterThan + 1);
     }
 
