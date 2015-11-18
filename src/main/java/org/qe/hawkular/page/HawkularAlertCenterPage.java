@@ -18,6 +18,7 @@ public class HawkularAlertCenterPage {
 
     By alertCenterLocator = HawkularAlertCenterPageConstants.alertCenterLocator;
     By lastJvmHeapUsedAlertDetailLocator = HawkularAlertCenterPageConstants.lastJvmHeapUsedAlertDetailLocator;
+    By lastJvmNonHeapUsedAlertDetailLocator = HawkularAlertCenterPageConstants.lastJvmNonHeapUsedAlertDetailLocator;
     By alertDetailResourcePathLocator = HawkularAlertCenterPageConstants.alertDetailResourcePathLocator;
     By alertDetailStateButtonLocator = HawkularAlertCenterPageConstants.alertDetailStateButtonLocator;
     By alertDetailStateResolvedButtonLocator = HawkularAlertCenterPageConstants.alertDetailStateResolvedButtonLocator;
@@ -36,6 +37,20 @@ public class HawkularAlertCenterPage {
             util.refresh();
             if (util.existsElement(lastJvmHeapUsedAlertDetailLocator)) {
                 util.navigateTo(lastJvmHeapUsedAlertDetailLocator);
+                return;
+            }
+            util.refresh();
+        }
+        Assert.fail();
+    }
+
+    public void navigateToLastNonHeapUsedAlert() {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.navigateTo(alertCenterLocator);
+        for (int i = 0; i < ALERT_CENTER_REALOAD_ITERATTIONS; i++) {
+            util.refresh();
+            if (util.existsElement(lastJvmNonHeapUsedAlertDetailLocator)) {
+                util.navigateTo(lastJvmNonHeapUsedAlertDetailLocator);
                 return;
             }
             util.refresh();

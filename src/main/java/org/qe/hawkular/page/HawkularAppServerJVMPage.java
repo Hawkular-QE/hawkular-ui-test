@@ -17,30 +17,9 @@ public class HawkularAppServerJVMPage {
         this.driver = driver;
     }
 
+    // JVM Page / common
     By alertSettingsLocator = HawkularAppServerJVMConstants.alertSettingsLocator;
     By alertSettingsOpenVerifyLocator = HawkularAppServerJVMConstants.alertSettingsOpenVerifyLocator;
-
-    By alertSettingHeapUsageGreaterLocator = HawkularAppServerJVMConstants.alertSettingHeapUsageGreaterLocator;
-    By alertSettingHeapUsageLessLocator = HawkularAppServerJVMConstants.alertSettingHeapUsageLessLocator;
-
-    By alertSettingNonHeapUsageGreaterLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageGreaterLocator;
-    By alertSettingNonHeapUsageLessLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageLessLocator;
-
-    By heapUsageGreaterSwitchLocator = HawkularAppServerJVMConstants.heapUsageGreaterSwitchLocator;
-    By heapUsageLessSwitchLocator = HawkularAppServerJVMConstants.heapUsageLessSwitchLocator;
-
-    By alertSettingNonHeapUsageButtonLocator = HawkularAppServerJVMConstants.alertSettingNonHeapUsageButtonLocator;
-
-    By heapUsageCreateAlertEveryTimeOptionLocator = HawkularAppServerJVMConstants.heapUsageCreateAlertEveryTimeOptionLocator;
-
-    By heapUsageCreateAlertWhenConditionOptionLocator = HawkularAppServerJVMConstants.heapUsageCreateAlertWhenConditionOptionLocator;
-    By createAlertConditionTimeLocator = HawkularAppServerJVMConstants.createAlertConditionTimeLocator;
-    By createAlertConditionTimeUnitLocator = HawkularAppServerJVMConstants.createAlertConditionTimeUnitLocator;
-    By createAlertNotificationEmailLocator = HawkularAppServerJVMConstants.createAlertNotificationEmailLocator;
-
-    By createAlertSaveLocator = HawkularAppServerJVMConstants.createAlertSaveLocator;
-    By createAlertCancelLocator = HawkularAppServerJVMConstants.createAlertCancelLocator;
-    By createAlertVerifySaveLocator = HawkularAppServerJVMConstants.createAlertVerifySaveLocator;
 
     public void openAlertSettings() {
         HawkularUtils util = new HawkularUtils(driver);
@@ -48,53 +27,9 @@ public class HawkularAppServerJVMPage {
         util.waitForElementPresent(alertSettingsOpenVerifyLocator);
     }
 
-    public void setHeapUsageGreaterThan(float percent) {
-        HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(alertSettingHeapUsageGreaterLocator, String.valueOf(percent));
-    }
-
-    public void setNonHeapUsageLessThan(float percent) {
-        HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(alertSettingNonHeapUsageLessLocator, String.valueOf(percent));
-    }
-
-    public void setNonHeapUsageGreaterThan(float percent) {
-        HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(alertSettingNonHeapUsageGreaterLocator, String.valueOf(percent));
-    }
-
-    public void setHeapUsageLessThan(float percent) {
-        HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(alertSettingHeapUsageLessLocator, String.valueOf(percent));
-    }
-
-    public void setOptionCreateAlert() {
-        this.setOptionCreateAlert(null);
-    }
-
-    public void setOptionCreateAlert(By timeLocator, CharSequence... cs) {
-        HawkularUtils util = new HawkularUtils(driver);
-        if (timeLocator == null || cs == null) {
-            util.navigateTo(heapUsageCreateAlertEveryTimeOptionLocator);
-        } else {
-            util.navigateTo(heapUsageCreateAlertWhenConditionOptionLocator);
-            util.sendKeysTo(createAlertConditionTimeLocator, cs);
-            util.navigateTo(createAlertConditionTimeUnitLocator);
-            util.navigateTo(timeLocator);
-        }
-    }
-
-    public void setEmail(CharSequence... cs) {
-        HawkularUtils util = new HawkularUtils(driver);
-        util.sendKeysTo(createAlertNotificationEmailLocator, cs);
-    }
-
-    public void setLocalEmail() {
-        String email = System.getProperty("notifEmail");
-        Assert.assertTrue(email != null);
-        CharSequence cs = (CharSequence) (email);
-        setEmail(cs);
-    }
+    By createAlertSaveLocator = HawkularAppServerJVMConstants.createAlertSaveLocator;
+    By createAlertCancelLocator = HawkularAppServerJVMConstants.createAlertCancelLocator;
+    By createAlertVerifySaveLocator = HawkularAppServerJVMConstants.createAlertVerifySaveLocator;
 
     /**
      * Save button is not enabled if current configuration equals to previous configuration
@@ -108,9 +43,116 @@ public class HawkularAppServerJVMPage {
         util.assertElementPresent(createAlertVerifySaveLocator);
     }
 
+    // Heap Usage
+    By heapUsageGreaterLocator = HawkularAppServerJVMConstants.createAlertHeapUsageGreaterLocator;
+    By heapUsageUsageLessLocator = HawkularAppServerJVMConstants.createAlertHeapUsageUsageLessLocator;
+
+    public void setHeapUsageGreaterThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(heapUsageGreaterLocator, String.valueOf(percent));
+    }
+
+    public void setHeapUsageLessThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(heapUsageUsageLessLocator, String.valueOf(percent));
+    }
+
+    By heapUsageGreaterSwitchLocator = HawkularAppServerJVMConstants.createAlertHeapUsageGreaterSwitchLocator;
+    By heapUsageLessSwitchLocator = HawkularAppServerJVMConstants.createAlertHeapUsageLessSwitchLocator;
+
+    By createAlertHeapUsageEveryTimeOptionLocator = HawkularAppServerJVMConstants.createAlertHeapUsageEveryTimeOptionLocator;
+    By createAlertHeapUsageWhenConditionOptionLocator = HawkularAppServerJVMConstants.createAlertHeapUsageWhenConditionOptionLocator;
+    By createAlertHeapUsageConditionTimeLocator = HawkularAppServerJVMConstants.createAlertHeapUsageConditionTimeLocator;
+    By createAlertHeapUsageConditionTimeUnitLocator = HawkularAppServerJVMConstants.createAlertHeapUsageConditionTimeUnitLocator;
+
+    public void setHeapUsageOptionCreateAlert() {
+        this.setHeapUsageOptionCreateAlert(null);
+    }
+
+    public void setHeapUsageOptionCreateAlert(By timeLocator, CharSequence... cs) {
+        HawkularUtils util = new HawkularUtils(driver);
+        if (timeLocator == null || cs == null) {
+            util.navigateTo(createAlertHeapUsageEveryTimeOptionLocator);
+        } else {
+            util.navigateTo(createAlertHeapUsageWhenConditionOptionLocator);
+            util.sendKeysTo(createAlertHeapUsageConditionTimeLocator, cs);
+            util.navigateTo(createAlertHeapUsageConditionTimeUnitLocator);
+            util.navigateTo(timeLocator);
+        }
+    }
+
+    By createAlertHeapUsageNotificationEmailLocator = HawkularAppServerJVMConstants.createAlertHeapUsageNotificationEmailLocator;
+
+    public void setHeapUsageEmail(CharSequence... cs) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(createAlertHeapUsageNotificationEmailLocator, cs);
+    }
+
+    public void setLocalHeapUsageEmail() {
+        String email = System.getProperty("notifEmail");
+        Assert.assertTrue(email != null);
+        CharSequence cs = (CharSequence) (email);
+        setHeapUsageEmail(cs);
+    }
+
+    // Non-Heap Usage
+    By createAlertNonHeapUsageUsageButtonLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageUsageButtonLocator;
+
     public void toNonHeapUsage() {
         HawkularUtils util = new HawkularUtils(driver);
-        util.navigateTo(alertSettingNonHeapUsageButtonLocator);
+        util.navigateTo(createAlertNonHeapUsageUsageButtonLocator);
+    }
+
+    By createAlertNonHeapUsageUsageGreaterLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageUsageGreaterLocator;
+    By createAlertNonHeapUsageUsageLessLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageUsageLessLocator;
+
+    public void setNonHeapUsageLessThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(createAlertNonHeapUsageUsageLessLocator, String.valueOf(percent));
+    }
+
+    public void setNonHeapUsageGreaterThan(float percent) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(createAlertNonHeapUsageUsageGreaterLocator, String.valueOf(percent));
+    }
+
+    By createAlertNonHeapUsageGreaterSwitchLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageGreaterSwitchLocator;
+    By createAlertNonHeapUsageLessSwitchLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageLessSwitchLocator;
+
+    By createAlertNonHeapUsageEveryTimeOptionLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageEveryTimeOptionLocator;
+
+    By createAlertNonHeapUsageWhenConditionOptionLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageWhenConditionOptionLocator;
+    By createAlertNonHeapUsageConditionTimeLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageConditionTimeLocator;
+    By createAlertNonHeapUsageConditionTimeUnitLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageConditionTimeUnitLocator;
+
+    public void setNonHeapUsageOptionCreateAlert() {
+        this.setNonHeapUsageOptionCreateAlert(null);
+    }
+
+    public void setNonHeapUsageOptionCreateAlert(By timeLocator, CharSequence... cs) {
+        HawkularUtils util = new HawkularUtils(driver);
+        if (timeLocator == null || cs == null) {
+            util.navigateTo(createAlertNonHeapUsageEveryTimeOptionLocator);
+        } else {
+            util.navigateTo(createAlertNonHeapUsageWhenConditionOptionLocator);
+            util.sendKeysTo(createAlertNonHeapUsageConditionTimeLocator, cs);
+            util.navigateTo(createAlertNonHeapUsageConditionTimeUnitLocator);
+            util.navigateTo(timeLocator);
+        }
+    }
+
+    By createAlertNonHeapUsageNotificationEmailLocator = HawkularAppServerJVMConstants.createAlertNonHeapUsageNotificationEmailLocator;
+
+    public void setNonHeapUsageEmail(CharSequence... cs) {
+        HawkularUtils util = new HawkularUtils(driver);
+        util.sendKeysTo(createAlertNonHeapUsageNotificationEmailLocator, cs);
+    }
+
+    public void setLocalNonHeapUsageEmail() {
+        String email = System.getProperty("notifEmail");
+        Assert.assertTrue(email != null);
+        CharSequence cs = (CharSequence) (email);
+        setNonHeapUsageEmail(cs);
     }
 
 }
