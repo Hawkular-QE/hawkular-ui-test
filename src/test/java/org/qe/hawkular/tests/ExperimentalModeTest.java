@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.qe.hawkular.driver.HawkularSeleniumWebDriver;
 import org.qe.hawkular.driver.HawkularSeleniumLocalWebDriver;
+import org.qe.hawkular.element.HawkularInstallAgentConstants;
 import org.qe.hawkular.element.HawkularLoginPageConstants;
 import org.qe.hawkular.element.HawkularManagementConsolePageConstants;
 import org.qe.hawkular.element.HawkularRegistrationPageConstants;
@@ -43,31 +44,36 @@ public class ExperimentalModeTest extends HawkularSeleniumLocalWebDriver {
 				HawkularRegistrationPageConstants.email);
 	}	
 	
+	/*
 	@AfterMethod
 	public void closeSession() {
-		driver.quit();
+		//driver.quit();
 	}
+	*/
 		
 	@Test
 	public void hawkularLoginTest()	throws Exception {
 		WebDriver driver = createLocalDriver();
 		driver.get(HawkularSeleniumWebDriver.hawkularUrl);
-		Reporter.log(driver.getTitle());
 
 		HawkularLoginPage loginPage = new HawkularLoginPage(driver);
 		loginPage.loginAs(HawkularRegistrationPageConstants.username, HawkularRegistrationPageConstants.password);		
 		
-		WebElement elem = driver.findElement(By.id("hawkularLogo"));
-		System.out.println("FOUND: " + elem.getText());
+		WebElement elem = driver.findElement(HawkularInstallAgentConstants.logoLocator);
 		elem.click();		
 
-		WebElement elemAI = driver.findElement(By.xpath("//*[contains(text(),'Install Agent')]"));
-		Reporter.log("FOUND: " + elemAI.getText());
-		Reporter.log("Is 'install agent' displayed - " + elemAI.isDisplayed());
+		WebElement elemAI = driver.findElement(HawkularInstallAgentConstants.installAgentLocator);
+		askSubject(elemAI);
 		
 		elem.click();	
-		Reporter.log("Is 'install agent' displayed - " + elemAI.isDisplayed());
-
+		askSubject(elemAI);
+		
 		loginPage.logout();
+		driver.quit();
+	}
+
+	private void askSubject(Object asked) {
+		Reporter.log(HawkularInstallAgentConstants.testSubject + ((WebElement) asked).isDisplayed());
+		
 	}
 }
