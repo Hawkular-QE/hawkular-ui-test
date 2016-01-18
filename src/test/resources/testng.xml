@@ -1,82 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="HawkularUITest">
 
-	<!-- Noop test -->
-	<!-- 
-	<test name="NoopTest">
-		<classes>
-			<class name="org.qe.hawkular.tests.NoopTest" />
-		</classes>
-	</test>
-	-->
-
-<!-- VSorokin's test -->
-	<test name="ExperimentalModeTest">
-		<classes>
-			<class name="org.qe.hawkular.tests.ExperimentalModeTest" />
-		</classes>
-	</test>
-	// --
-
-
 	<!-- Hawkular Red Hat Login and Registration Tests -->
-	<!-- 
 	<test name="HawkularLoginAndRegistrationTests">
 		<classes> 
-			<class name="org.qe.hawkular.tests.HawkualrLoginTest" />
-			<class name="org.qe.hawkular.tests.HawkularMultiTenancyTest" /> 
-			<class name="org.qe.hawkular.tests.HawkularRegistrationTest" />  				
+			<class name="org.qe.hawkular.tests.HawkualrLoginTest" />			
+			<class name="org.qe.hawkular.tests.HawkularMultiTenancyTest" />			
+			<class name="org.qe.hawkular.tests.HawkularRegistrationTest" />				
 		</classes>
 	</test>
-	-->
+		
 	<!-- Hawkular Home page test - Add/Delete URL tests -->
-	<!-- 
 	<test name="HawkularHomePageTests">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularHomePageTest" />
 		</classes>
 	</test>
-	-->
-	
-	<!-- Hawkular Red Hat Access Search Knowledge Base Test -->	
-	<!-- 
-	<test name="HawkularRHASearchTest">
-		<classes>
-			<class name="org.qe.hawkular.tests.HawkularRHASearchTest" />
-		</classes>
-	</test>
-	-->
 	
 	<!-- Hawkular App Server Tests -->
-        <!-- 
         <test name="HawkularAppServerTest">
                 <classes>
-                       <class name="org.qe.hawkular.tests.HawkularAppServerTest" />
-                </classes>
-     </test>
-     -->
-	
-    <!-- Hawkular Red Hat Access Support Case Tests -->
-	<!-- 
-	<test name="HawkularRHASupportCaseTest">
-                <classes>
-                        <class name="org.qe.hawkular.tests.HawkularRHASupportCaseTest" />
-                </classes>
-     </test>
-     -->
-    
-	<!-- Hawkular Red Hat Access Create Support Case Test -->
-	<!-- 
-	<test name="hawkularCreateSupportcaseTest">
-                <classes>
-                        <class name="org.qe.hawkular.tests.HawkularCreatCaseTest" />
+                        <class name="org.qe.hawkular.tests.HawkularAppServerTest" />
                 </classes>
         </test>
-    -->
 	
-	<!-- Hawkular Application Server Deployments Actions Tests -->
-	<!-- 
-	<test name="HawkualrWarActionTest">
+    <!-- Hawkular Application Server Deployments Actions Tests -->
+	<test name="HawkualrWarActionTest"> 
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularWarActionTest">
 				<methods>
@@ -84,10 +33,99 @@
 					<include name="hawkularEnableWarTest"></include>
 					<include name="hawkularRedeployWarTest"></include>
 					<include name="hawkularDisableWarTest"></include>
+					<include name="hawkularRemoveWarTest"></include>
 					<include name="hawkularEnableMultipleWarsTest"></include>
 				</methods>
 			</class>
 		</classes>
 	</test>
-	 -->
+	
+	<!-- Hawkular Datasources test -->
+	<test name="HawkularDatasourcesTest">
+		<classes>
+			<class name="org.qe.hawkular.tests.HawkularDatasourcesTest" />
+			<methods>					
+					<include name="hawkularAddDataSourceTest"></include>
+					<include name="hawkularDeleteDataSourceTest"></include>
+					<include name="hawkularAddJDBCDriversTest"></include>
+					<include name="hawkularExportJDRTest"></include>
+					<include name="hawkularOverviewExportJDRTest"></include>
+					<include name="hawkularOverviewAddDataSourceTest"></include>
+					
+			</methods>
+		</classes>
+	</test>  	
+		
+	<!-- Hawkular Add Deployment Tests -->
+	<test name="HawkularAddDeploymentTest">
+	<classes>
+			<class name="org.qe.hawkular.tests.HawkularAddDeploymentTest" />
+		</classes>
+	</test>
+	
+	<!-- Hawkular Organizations Tests -->
+	<test name="HawkularOrganizationsTest">
+	<classes>
+			<class name="org.qe.hawkular.tests.HawkularOrganizationsTest" />
+		</classes>
+	</test>		
+	
+	<!-- Hawkular User Settings Tests -->
+	<test name="HawkularUserSettingsTest">
+	<classes>
+			<class name="org.qe.hawkular.tests.HawkularUserSettingsTest" />
+		</classes>
+	</test>		
+
+         <!-- Switch User -->
+        <test name="HawkularSwitchUserTest">
+                <classes>
+                        <class name="org.qe.hawkular.tests.HawkularSwitchUserTest" />
+                </classes>
+        </test>
+
+	<!-- Hawkular Alerts Tests -->
+	<test name="HawkularAlertTests">
+		<classes>
+			<class name="org.qe.hawkular.tests.HawkularAlertFilterTest" />
+			<class name="org.qe.hawkular.tests.HawkularAlertNotificationsTest" />
+			<class name="org.qe.hawkular.tests.HawkularAlertsSettingsTest" />
+		</classes>
+	</test> 
+	
+	<!-- Hawkular Topology  Tests -->	
+	<test name="HawkularNetworkTopologyTest">
+		<classes>
+			<class name="org.qe.hawkular.tests.HawkularNetworkTopologyTest" />
+		</classes>
+	</test> 
+	
+	<!-- Hawkular add/remove tokens Tests -->  
+    <test name="HawkularTokenTest">
+        <classes>
+            <class name="org.qe.hawkular.tests.HawkularTokenTest" />
+        </classes>
+    </test>
+    
+    <!-- Hawkular test for overview tab of app server -->   
+    <test name="HawkularApplicationOverviewTest">
+        <classes>
+            <class name="org.qe.hawkular.tests.HawkularApplicationOverviewTest" />
+        </classes>
+    </test>
+    
+    <!-- Hawkular remember last state test -->   
+    <test name="HawkularRememberLastStateTest">
+        <classes>
+            <class name="org.qe.hawkular.tests.HawkularRememberLastStateTest" />
+        </classes>
+    </test>
+      
+	<!-- Experimental Mode test -->
+	<test name="ExperimentalModeTest">
+		<classes>
+			<class name="org.qe.hawkular.tests.ExperimentalModeTest" />
+		</classes>
+	</test> 
+	 
 </suite>
