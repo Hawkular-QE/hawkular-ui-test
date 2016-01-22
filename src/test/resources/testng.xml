@@ -49,9 +49,6 @@
 					<include name="hawkularDeleteDataSourceTest"></include>
 					<include name="hawkularAddJDBCDriversTest"></include>
 					<include name="hawkularExportJDRTest"></include>
-					<include name="hawkularOverviewExportJDRTest"></include>
-					<include name="hawkularOverviewAddDataSourceTest"></include>
-					
 			</methods>
 		</classes>
 	</test>  	
@@ -77,19 +74,11 @@
 		</classes>
 	</test>		
 
-         <!-- Switch User -->
-        <test name="HawkularSwitchUserTest">
-                <classes>
-                        <class name="org.qe.hawkular.tests.HawkularSwitchUserTest" />
-                </classes>
-        </test>
-
 	<!-- Hawkular Alerts Tests -->
 	<test name="HawkularAlertTests">
 		<classes>
 			<class name="org.qe.hawkular.tests.HawkularAlertFilterTest" />
 			<class name="org.qe.hawkular.tests.HawkularAlertNotificationsTest" />
-			<class name="org.qe.hawkular.tests.HawkularAlertsSettingsTest" />
 		</classes>
 	</test> 
 	
@@ -99,33 +88,11 @@
 			<class name="org.qe.hawkular.tests.HawkularNetworkTopologyTest" />
 		</classes>
 	</test> 
-	
-	<!-- Hawkular add/remove tokens Tests -->  
-    <test name="HawkularTokenTest">
-        <classes>
-            <class name="org.qe.hawkular.tests.HawkularTokenTest" />
-        </classes>
-    </test>
-    
-    <!-- Hawkular test for overview tab of app server -->   
-    <test name="HawkularApplicationOverviewTest">
-        <classes>
-            <class name="org.qe.hawkular.tests.HawkularApplicationOverviewTest" />
-        </classes>
-    </test>
-    
-    <!-- Hawkular remember last state test -->   
-    <test name="HawkularRememberLastStateTest">
-        <classes>
-            <class name="org.qe.hawkular.tests.HawkularRememberLastStateTest" />
-        </classes>
-    </test>
-      
+
 	<!-- Experimental Mode test -->
 	<test name="ExperimentalModeTest">
 		<classes>
 			<class name="org.qe.hawkular.tests.ExperimentalModeTest" />
 		</classes>
-	</test> 
-	 
+	</test> 	 
 </suite>
