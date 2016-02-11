@@ -39,6 +39,9 @@ public class hawkularAppTransactionTest extends HawkularSeleniumLocalWebDriver {
     
     @Test
     public void hawkularApplicationTransactionTest() throws Exception { 
+    	
+    	_logger.info("verifying the newly added transaction tab and its Element");
+    	
         driver = hawkularLoginToDeployments();
         hawkularApplicationTransactionPage verify = new hawkularApplicationTransactionPage(driver);
         
