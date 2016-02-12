@@ -46,6 +46,8 @@ public class hawkularAppServerPlatformTest extends HawkularSeleniumLocalWebDrive
     @Test
     public void hawkularApplicationServerPlatformTest() throws Exception {
         driver = hawkularLoginToDeployments();
+        _logger.info(" Veryfing newly added Platform tab");
+        
         hawkularApplicationServerPlatformPage verify = new hawkularApplicationServerPlatformPage(driver);
         
         verify.checkAppPlatform();
