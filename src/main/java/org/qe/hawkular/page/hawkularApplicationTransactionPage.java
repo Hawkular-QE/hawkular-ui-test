@@ -1,5 +1,7 @@
 package org.qe.hawkular.page;
 
+import junit.framework.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.qe.hawkular.element.HawkularAppServerPageConstants;
@@ -17,28 +19,19 @@ public class hawkularApplicationTransactionPage {
 
 	}
 	
-    By ApplicationServerTab= HawkularApplicationOverviewConstants.ApplicationServerTab;
-	
-	By localWildfyServerLink= HawkularAppServerPageConstants.localWildfyServerLink;
-	By appserverTransactionsTabLink= HawkularAppServerPageConstants.appserverTransactionsTabLink;
-	
-	By transactionMetrics=hawkularApplicationTransactionConstatnts.transactionMetrics;
-	By transactionGraph=hawkularApplicationTransactionConstatnts.transactionGraph;
-	By transactionsAlert=hawkularApplicationTransactionConstatnts.transactionsAlert;
-	By transactionStatus=hawkularApplicationTransactionConstatnts.transactionStatus;
 	
 public void checkAppTransaction()
 	
 	{
 		
 		HawkularUtils utils = new HawkularUtils(driver);
-		utils.navigateTo(ApplicationServerTab);
-		utils.navigateTo(localWildfyServerLink);
-		utils.navigateTo(appserverTransactionsTabLink);
-		utils.waitForElementPresent(transactionMetrics);
-	//	utils.waitForElementPresent(transactionGraph);
-		utils.waitForElementPresent(transactionsAlert);
-		utils.waitForElementPresent(transactionStatus);
+		utils.navigateTo(HawkularApplicationOverviewConstants.ApplicationServerTab);
+		utils.navigateTo( HawkularAppServerPageConstants.localWildfyServerLink);
+		utils.navigateTo( HawkularAppServerPageConstants.appserverTransactionsTabLink);
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationTransactionConstatnts.transactionMetrics));
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationTransactionConstatnts.transactionGraph));
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationTransactionConstatnts.transactionsAlert));
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationTransactionConstatnts.transactionStatus));
 		
 	}
 	

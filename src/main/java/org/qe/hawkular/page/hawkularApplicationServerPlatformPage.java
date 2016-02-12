@@ -1,5 +1,7 @@
 package org.qe.hawkular.page;
 
+import junit.framework.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.qe.hawkular.element.HawkularAppServerPageConstants;
@@ -23,31 +25,20 @@ public class hawkularApplicationServerPlatformPage {
 
 	}
 	
-	By ApplicationServerTab= HawkularApplicationOverviewConstants.ApplicationServerTab;
-	
-	By localWildfyServerLink= HawkularAppServerPageConstants.localWildfyServerLink;
-	By appserverPlatformTabLink= HawkularAppServerPageConstants.appserverPlatformTabLink;
-	
-	
-	By platformMemoryUsageGraph= hawkularApplicationServerPlatformConstants.platformMemoryUsageGraph;
-	By platformAlerts= hawkularApplicationServerPlatformConstants.platformAlerts;
-	By platformCpuUsage= hawkularApplicationServerPlatformConstants.platformCpuUsage;
-	By platformProcessor= hawkularApplicationServerPlatformConstants.platformProcessor;
-	By platformFileSystemUsage= hawkularApplicationServerPlatformConstants.platformFileSystemUsage;
-	
+
 	public void checkAppPlatform()
 	
 	{
 		
 		HawkularUtils utils = new HawkularUtils(driver);
-		utils.navigateTo(ApplicationServerTab);
-		utils.navigateTo(localWildfyServerLink);
-		utils.navigateTo(appserverPlatformTabLink);
-	//	utils.waitForElementPresent(platformMemoryUsageGraph);
-		utils.waitForElementPresent(platformAlerts);
-	//	utils.waitForElementPresent(platformCpuUsage);
-	//	utils.waitForElementPresent(platformProcessor);
-		utils.waitForElementPresent(platformFileSystemUsage);
+		utils.navigateTo(HawkularApplicationOverviewConstants.ApplicationServerTab);
+		utils.navigateTo(HawkularAppServerPageConstants.localWildfyServerLink);
+		utils.navigateTo(HawkularAppServerPageConstants.appserverPlatformTabLink);
+	//	Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationServerPlatformConstants.platformMemoryUsageGraph));
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationServerPlatformConstants.platformAlerts));
+	//	Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationServerPlatformConstants.platformCpuUsage));
+	//	Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationServerPlatformConstants.platformProcessor));
+		Assert.assertTrue(utils.waitForElementPresent(hawkularApplicationServerPlatformConstants.platformFileSystemUsage));
 		
 	}
 	
